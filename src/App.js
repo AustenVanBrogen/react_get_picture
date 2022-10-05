@@ -6,13 +6,18 @@ function App() {
 
   const [dogPic, setDogPic] = useState(pic);
 
-  function getPic(){
-    if(dogPic === pic){
-      setDogPic(pic2);
-    }
-    else{
-      setDogPic(pic);
-    }
+  async function getPic(){
+    // if(dogPic === pic){
+    //   setDogPic(pic2);
+    // }
+    // else{
+    //   setDogPic(pic);
+    // }
+
+    const response = await fetch('https://dog.ceo/api/breeds/image/random');
+    const data = await response.json();
+    console.log(data.message);
+    setDogPic(data.message);
     
   }
 
